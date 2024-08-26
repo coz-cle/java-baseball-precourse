@@ -2,8 +2,14 @@ package baseball.domain;
 
 public class BaseballNumber {
 
-    /**
-     * TODO: 컴퓨터가 만든 3자리 난수를 관리하는 객체 정의하기
-     */
+    private final int number;
+
+    private BaseballNumber(int number) {
+        this.number = number;
+    }
+
+    public static BaseballNumber create(int number) {
+        return new BaseballNumber(number);
+    }
 
 }
