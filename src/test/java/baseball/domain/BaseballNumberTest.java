@@ -14,9 +14,9 @@ class BaseballNumberTest {
         // given
         BaseballNumber baseballNumber = new BaseballNumber();
         // when
-        int firstNumber = baseballNumber.getFirst_number();
-        int secondNumber = baseballNumber.getSecond_number();
-        int thirdNumber = baseballNumber.getThird_number();
+        int firstNumber = baseballNumber.getBaseball_numbers()[0];
+        int secondNumber = baseballNumber.getBaseball_numbers()[1];;
+        int thirdNumber = baseballNumber.getBaseball_numbers()[2];;
 
         // then
         assertAll(() -> {
