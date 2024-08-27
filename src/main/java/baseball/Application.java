@@ -1,12 +1,33 @@
 package baseball;
 
+import baseball.domain.BaseballNumber;
+import baseball.enums.GameControlSwitchEnum;
+import baseball.service.BaseballGameService;
+import baseball.service.InputValidator;
+import baseball.service.impl.BaseballGameServiceImpl;
+import baseball.service.impl.InputValidatorImpl;
+import baseball.util.BasicUtils;
+
 public class Application {
     public static void main(String[] args) {
-        // 게임 시작
+	    BaseballGameService baseballGameService = new BaseballGameServiceImpl();
+	    InputValidator inputValidator = new InputValidatorImpl();
 
-        // 게임 진행
+	    while (true) {
+		    // 게임 준비
+		    BaseballNumber baseballNumber = baseballGameService.readyPlayGame();
 
-        // 게임 완료
-        
+		    // 게임 진행
+		    final String validatedBaseBallNumber = inputValidator.validationBaseBallNumber(BasicUtils.readLine());
+		    baseballGameService.executeGame(baseballNumber, validatedBaseBallNumber);
+
+		    // 게임 완료
+		    final String validatedGameEndSwitch = inputValidator.validationGameEndSwitch(BasicUtils.readLine());
+		    GameControlSwitchEnum gameEndControl = GameControlSwitchEnum.valueOf(validatedGameEndSwitch);
+		    final boolean finishedGame = baseballGameService.isFinishedGame(gameEndControl);
+			if(finishedGame) {
+				break;
+			}
+	    }
     }
 }
