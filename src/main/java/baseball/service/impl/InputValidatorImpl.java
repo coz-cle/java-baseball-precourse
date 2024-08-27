@@ -9,7 +9,7 @@ public class InputValidatorImpl implements InputValidator {
 	}
 
 	@Override
-	public String validationGameEndSwitch(String inputValue) {
+	public String validationGameControlSwitch(String inputValue) {
 		return "";
 	}
 }

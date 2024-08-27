@@ -22,9 +22,9 @@ public class Application {
 		    baseballGameService.executeGame(baseballNumber, validatedBaseBallNumber);
 
 		    // 게임 완료
-		    final String validatedGameEndSwitch = inputValidator.validationGameEndSwitch(BasicUtils.readLine());
-		    GameControlSwitchEnum gameEndControl = GameControlSwitchEnum.valueOf(validatedGameEndSwitch);
-		    final boolean finishedGame = baseballGameService.isFinishedGame(gameEndControl);
+		    final String validatedGameControlSwitch = inputValidator.validationGameControlSwitch(BasicUtils.readLine());
+		    GameControlSwitchEnum gameControlSwitch = GameControlSwitchEnum.valueOf(validatedGameControlSwitch);
+		    final boolean finishedGame = baseballGameService.isFinishedGame(gameControlSwitch);
 			if(finishedGame) {
 				break;
 			}
