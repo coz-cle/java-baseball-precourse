@@ -9,13 +9,14 @@ import static baseball.util.Constants.MAX_BASE_BALL_NUMBER;
 public class BasicUtils {
 
     // 1~9까지의 수 중에서 난수 제공
-    public int generateRandomNumber() {
+    public static int generateRandomNumber() {
         return Randoms.pickNumberInRange(Constants.MIN_BASE_BALL_NUMBER, MAX_BASE_BALL_NUMBER);
     }
 
     // 사용자 입력
-    public String readLine() {
-        return Console.readLine();
+    public static String readLine() {
+	    final String readLine = Console.readLine();
+	    return readLine;
     }
 
 }
