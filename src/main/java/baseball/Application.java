@@ -23,8 +23,8 @@ public class Application {
 
 		    // 게임 완료
 		    GameControlSwitchEnum gameControlSwitch = GameControlSwitchEnum.of(BasicUtils.readLine());
-		    final boolean finishedGame = baseballGameService.isFinishedGame(gameControlSwitch);
-			if(finishedGame) {
+		    final boolean isGameOver = baseballGameService.isGameOver(gameControlSwitch);
+			if(isGameOver) {
 				break;
 			}
 	    }

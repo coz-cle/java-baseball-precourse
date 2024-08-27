@@ -33,7 +33,7 @@ public class BaseballGameServiceImpl implements BaseballGameService {
 	}
 
 	@Override
-	public boolean isFinishedGame(GameControlSwitchEnum gameControlSwitch) {
+	public boolean isGameOver(GameControlSwitchEnum gameControlSwitch) {
 		return GameControlSwitchEnum.END.equals(gameControlSwitch);
 	}
 

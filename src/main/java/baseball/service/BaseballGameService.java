@@ -9,5 +9,5 @@ public interface BaseballGameService {
 
 	void executeGame(BaseballNumber systemNumber, String inputNumber);
 
-	boolean isFinishedGame(GameControlSwitchEnum gameControlSwitchEnum);
+	boolean isGameOver(GameControlSwitchEnum gameControlSwitchEnum);
 }
