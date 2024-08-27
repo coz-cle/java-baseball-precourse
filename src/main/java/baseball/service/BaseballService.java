@@ -7,8 +7,8 @@ public interface BaseballService {
     BaseballNumber gameStart();
 
     // 게임 진행
-    void runGame();
+    void runGame(BaseballNumber baseballNumber);
 
     // 게임 완료
-    void gameEnd();
+    boolean gameEnd();
 }

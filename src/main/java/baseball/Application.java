@@ -8,14 +8,18 @@ public class Application {
 
         BaseballServiceImpl baseballService = new BaseballServiceImpl();
 
-        // 게임 시작
-        BaseballNumber baseballNumber = baseballService.gameStart();
+        while (true) {
+            // 게임 시작
+            BaseballNumber baseballNumber = baseballService.gameStart();
 
-        // 게임 진행
-        baseballService.runGame();
+            // 게임 진행
+            baseballService.runGame(baseballNumber);
 
+            // 게임 완료
+            boolean stopFlag = baseballService.gameEnd();
 
-        // 게임 완료
-        baseballService.gameEnd();
+            if(stopFlag) return;
+        }
+
     }
 }
