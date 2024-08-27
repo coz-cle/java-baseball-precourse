@@ -4,7 +4,7 @@ import baseball.domain.BaseballNumber;
 
 public interface BaseballGameService {
 
-	BaseballNumber readyPlayGame();
+	BaseballNumber ready();
 
-	void executeGame(BaseballNumber systemNumber, String inputNumber);
+	void run(BaseballNumber systemNumber, String inputNumber);
 }

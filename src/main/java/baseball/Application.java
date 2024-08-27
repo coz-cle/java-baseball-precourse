@@ -15,11 +15,11 @@ public class Application {
 
 	    while (true) {
 		    // 게임 준비
-		    BaseballNumber baseballNumber = baseballGameService.readyPlayGame();
+		    BaseballNumber baseballNumber = baseballGameService.ready();
 
 		    // 게임 진행
 		    final String validatedBaseBallNumber = inputValidator.validationBaseBallNumber(BasicUtils.readLine());
-		    baseballGameService.executeGame(baseballNumber, validatedBaseBallNumber);
+		    baseballGameService.run(baseballNumber, validatedBaseBallNumber);
 
 		    // 게임 완료
 		    GameControlSwitch gameControlSwitch = GameControlSwitch.of(BasicUtils.readLine());

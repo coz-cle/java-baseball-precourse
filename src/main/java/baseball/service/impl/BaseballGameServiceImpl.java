@@ -1,13 +1,12 @@
 package baseball.service.impl;
 
 import baseball.domain.BaseballNumber;
-import baseball.enums.GameControlSwitch;
 import baseball.service.BaseballGameService;
 
 public class BaseballGameServiceImpl implements BaseballGameService {
 
 	@Override
-	public BaseballNumber readyPlayGame() {
+	public BaseballNumber ready() {
 
 		// 반복문
 			// 난수 생성
@@ -20,7 +19,7 @@ public class BaseballGameServiceImpl implements BaseballGameService {
 	}
 
 	@Override
-	public void executeGame(BaseballNumber systemNumber, String inputNumber) {
+	public void run(BaseballNumber systemNumber, String inputNumber) {
 		int strikeCount = 0;
 
 		// while 문
