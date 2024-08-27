@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.domain.BaseballNumber;
-import baseball.enums.GameControlSwitchEnum;
+import baseball.enums.GameControlSwitch;
 import baseball.service.BaseballGameService;
 import baseball.service.InputValidator;
 import baseball.service.impl.BaseballGameServiceImpl;
@@ -22,9 +22,8 @@ public class Application {
 		    baseballGameService.executeGame(baseballNumber, validatedBaseBallNumber);
 
 		    // 게임 완료
-		    GameControlSwitchEnum gameControlSwitch = GameControlSwitchEnum.of(BasicUtils.readLine());
-		    final boolean isGameOver = baseballGameService.isGameOver(gameControlSwitch);
-			if(isGameOver) {
+		    GameControlSwitch gameControlSwitch = GameControlSwitch.of(BasicUtils.readLine());
+			if(gameControlSwitch.isEndSwitch()) {
 				break;
 			}
 	    }

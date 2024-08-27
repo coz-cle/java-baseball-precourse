@@ -1,7 +1,7 @@
 package baseball.service.impl;
 
 import baseball.domain.BaseballNumber;
-import baseball.enums.GameControlSwitchEnum;
+import baseball.enums.GameControlSwitch;
 import baseball.service.BaseballGameService;
 
 public class BaseballGameServiceImpl implements BaseballGameService {
@@ -31,10 +31,4 @@ public class BaseballGameServiceImpl implements BaseballGameService {
 		// 스트라이크 아웃 메세지 출력
 
 	}
-
-	@Override
-	public boolean isGameOver(GameControlSwitchEnum gameControlSwitch) {
-		return GameControlSwitchEnum.END.equals(gameControlSwitch);
-	}
-
 }
