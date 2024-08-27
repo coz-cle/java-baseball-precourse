@@ -22,8 +22,7 @@ public class Application {
 		    baseballGameService.executeGame(baseballNumber, validatedBaseBallNumber);
 
 		    // 게임 완료
-		    final String validatedGameControlSwitch = inputValidator.validationGameControlSwitch(BasicUtils.readLine());
-		    GameControlSwitchEnum gameControlSwitch = GameControlSwitchEnum.valueOf(validatedGameControlSwitch);
+		    GameControlSwitchEnum gameControlSwitch = GameControlSwitchEnum.of(BasicUtils.readLine());
 		    final boolean finishedGame = baseballGameService.isFinishedGame(gameControlSwitch);
 			if(finishedGame) {
 				break;

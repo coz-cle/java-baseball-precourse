@@ -7,9 +7,4 @@ public class InputValidatorImpl implements InputValidator {
 	public String validationBaseBallNumber(String inputValue) {
 		return "";
 	}
-
-	@Override
-	public String validationGameControlSwitch(String inputValue) {
-		return "";
-	}
 }
