@@ -1,40 +1,76 @@
 package baseball.service;
 
-import baseball.domain.BaseBallTotalCount;
 import baseball.domain.BaseballNumbers;
-import baseball.domain.GameResult;
+import baseball.service.dto.BaseBallTotalCount;
+import baseball.service.dto.GameResult;
 import baseball.view.InputProcessor;
+import baseball.view.OutputProcessor;
 
 import java.util.List;
+
+import static baseball.util.enums.GameMessage.CORRECT_ANSWER;
 
 public class GameManager {
 
     private final InputProcessor inputProcessor;
+    private final OutputProcessor outputProcessor;
     private final BaseballNumbersManager baseballNumbersManager;
 
-    public GameManager(
+    private GameManager(
             InputProcessor inputProcessor,
+            OutputProcessor outputProcessor,
             BaseballNumbersManager baseballNumbersManager
     ) {
         this.inputProcessor = inputProcessor;
+        this.outputProcessor = outputProcessor;
         this.baseballNumbersManager = baseballNumbersManager;
     }
 
-    public GameResult startGame() {
-        // 1. 랜덤
-        BaseballNumbers systemNumbers = baseballNumbersManager.createRandomBaseballNumbers();
+    public static GameManager create(
+            InputProcessor inputProcessor,
+            OutputProcessor outputProcessor,
+            BaseballNumbersManager baseballNumbersManager
+    ) {
+        return new GameManager(inputProcessor, outputProcessor, baseballNumbersManager);
+    }
 
-        // 2. 사용자 입력
-        List<Integer> input = inputProcessor.inputBaseballNumbers();
-        BaseballNumbers inputNumbers = baseballNumbersManager.create(input);
+    public void startGame() {
+        BaseballNumbers answerNumbers = baseballNumbersManager.createAnswerNumbers();
 
-        // 3. 스트라이크, 볼 개수
-        BaseBallTotalCount baseballTotalCount = baseballNumbersManager.getGameResult(systemNumbers, inputNumbers);
-
-        if(baseballTotalCount.isNothing()) {
-            return GameResult.createNothing();
+        boolean isGameOver = false;
+        while (!isGameOver) {
+            BaseballNumbers inputNumbers = getInputNumbers();
+            BaseBallTotalCount baseballTotalCount = getTotalCount(answerNumbers, inputNumbers);
+            provideHint(baseballTotalCount);
+            if (isCorrectAnswer(baseballTotalCount)) {
+                printCorrectAnswer();
+                isGameOver = true;
+            }
         }
-        return GameResult.createStrikeWithBall(baseballTotalCount);
+    }
+
+    private BaseballNumbers getInputNumbers() {
+        List<Integer> input = inputProcessor.inputBaseballNumbers();
+        BaseballNumbers inputNumbers = baseballNumbersManager.createInputNumbers(input);
+        return inputNumbers;
+    }
+
+    private BaseBallTotalCount getTotalCount(BaseballNumbers answerNumbers, BaseballNumbers inputNumbers) {
+        BaseBallTotalCount baseballTotalCount = baseballNumbersManager.getTotalCount(answerNumbers, inputNumbers);
+        return baseballTotalCount;
+    }
+
+    private void provideHint(BaseBallTotalCount baseballTotalCount) {
+        GameResult resultString = GameResult.create(baseballTotalCount);
+        outputProcessor.printGameResult(resultString.getResultString());
+    }
+
+    private boolean isCorrectAnswer(BaseBallTotalCount baseballTotalCount) {
+        return baseballNumbersManager.isThreeStrike(baseballTotalCount);
+    }
+
+    private void printCorrectAnswer() {
+        outputProcessor.printEnterGameResult(CORRECT_ANSWER.getValue());
     }
 
     public boolean askForRestart(InputProcessor inputProcessor) {

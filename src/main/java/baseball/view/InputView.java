@@ -1,6 +1,8 @@
 package baseball.view;
 
-import static baseball.util.BasicUtils.readLine;
+import static baseball.util.enums.GameMessage.GAME_RETRY;
+import static baseball.util.enums.GameMessage.INPUT_NUMBER;
+import static baseball.util.common.BasicUtils.readLine;
 import static baseball.view.OutputView.printEnterMessage;
 import static baseball.view.OutputView.printMessage;
 
@@ -8,7 +10,7 @@ public class InputView {
 
     public static String inputNumber() {
         try {
-            printMessage("숫자를 입력해주세요 : ");
+            printMessage(INPUT_NUMBER.getValue());
             return readLine();
         } catch (IllegalArgumentException exception) {
             printMessage(exception.getMessage());
@@ -18,7 +20,7 @@ public class InputView {
 
     public static String inputRestartNumber() {
         try {
-            printEnterMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            printEnterMessage(GAME_RETRY.getValue());
             return readLine();
         } catch (IllegalArgumentException exception) {
             printMessage(exception.getMessage());

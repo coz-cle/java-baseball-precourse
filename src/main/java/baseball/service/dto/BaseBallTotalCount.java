@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.service.dto;
 
 public class BaseBallTotalCount {
 
@@ -14,18 +14,15 @@ public class BaseBallTotalCount {
         return new BaseBallTotalCount(strikeCount, ballCount);
     }
 
-    public boolean isNothing() {
-        if (this.getStrikeCount() == 0 && this.getBallCount() == 0) {
-            return true;
-        }
-        return false;
+    protected boolean isNothing() {
+        return this.getStrikeCount() == 0 && this.getBallCount() == 0;
     }
 
-    public boolean hasStrike() {
+    protected boolean hasStrike() {
         return this.strikeCount != 0;
     }
 
-    public boolean hasBall() {
+    protected boolean hasBall() {
         return this.ballCount != 0;
     }
 
