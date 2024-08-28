@@ -1,10 +1,10 @@
-package baseball.util;
+package baseball.util.common;
 
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static baseball.util.Constants.MAX_BASE_BALL_NUMBER;
+import static baseball.util.common.Constants.MAX_BASE_BALL_NUMBER;
 
 public class BasicUtils {
 
