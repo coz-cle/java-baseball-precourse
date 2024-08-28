@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.BaseballGame;
 import baseball.domain.BaseballNumber;
 import baseball.service.impl.BaseballServiceImpl;
 
@@ -8,17 +9,22 @@ public class Application {
 
         BaseballServiceImpl baseballService = new BaseballServiceImpl();
 
-        while (true) {
+        boolean isGameRunning = true;
+        while (isGameRunning) {
+
             // 게임 시작
-            BaseballNumber baseballNumber = baseballService.gameStart();
+            BaseballGame baseballGame = baseballService.gameStart();
 
             // 게임 진행
-            baseballService.runGame(baseballNumber);
+            baseballService.runGame(baseballGame);
 
             // 게임 완료
-            boolean stopFlag = baseballService.gameEnd();
+            boolean endSignal = baseballService.gameEnd();
 
-            if(stopFlag) return;
+            if(endSignal) {
+                isGameRunning = false;
+            }
+
         }
 
     }

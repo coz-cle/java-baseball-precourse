@@ -21,7 +21,7 @@ public class BaseballGame {
     public void run(){
 
         boolean isRunning = true;
-
+        // FIXME: 무한루프 돌지 않고 try-catch 에서 처리할 수 있는 방법
         while (isRunning) {
             try {
                 String inputNumbers = getInput();
