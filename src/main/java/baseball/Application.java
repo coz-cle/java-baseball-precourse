@@ -30,7 +30,7 @@ public class Application {
 
 				//게임 진행
                 gameStatus = gameExecuteService.run(startDto);
-		    } while (!gameStatus.NotRunning());
+		    } while (gameStatus.isRunning());
 
 		    // 게임 완료
 			// TODO 개선 리팩터링 필요

@@ -7,8 +7,8 @@ public enum GameStatus {
 	OVER
 	;
 
-	public boolean NotRunning(){
-		return this == NOT_RUNNING;
+	public boolean isRunning(){
+		return this == RUNNING;
 	}
 
 	public boolean isOver() {
