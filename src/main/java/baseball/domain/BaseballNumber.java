@@ -1,27 +1,26 @@
 package baseball.domain;
 
-import java.util.List;
 
 public class BaseballNumber {
 
-	private final List<String> numbers;
+	private final String value;
 
-	private BaseballNumber(List<String> numbers) {
-		this.numbers = numbers;
+	private BaseballNumber(String value) {
+		this.value = value;
 	}
 
-	public static BaseballNumber from(List<String> numbers) {
-		return new BaseballNumber(numbers);
+	public static BaseballNumber from(String value) {
+		return new BaseballNumber(value);
 	}
 
-	public List<String> getNumbers() {
-		return numbers;
+	public String getValue() {
+		return value;
 	}
 
 	@Override
 	public String toString() {
 		return "BaseballNumber{" +
-				"number='" + numbers + '\'' +
+				"value='" + value + '\'' +
 				'}';
 	}
 }

@@ -23,14 +23,6 @@ public class BaseBallCount {
 		ball++;
 	}
 
-	public boolean hasBall(){
-		return hasCount(ball);
-	}
-
-	public boolean hasStrike(){
-		return hasCount(strike);
-	}
-
 	public int getStrike() {
 		return strike;
 	}
@@ -39,11 +31,15 @@ public class BaseBallCount {
 		return ball;
 	}
 
-	public boolean isNoting(){
-		return !hasBall() && !hasStrike();
+	public boolean isNothing(){
+		return strike == 0 && ball == 0;
 	}
 
-	private boolean hasCount(int count){
-		return count > 0;
+	@Override
+	public String toString() {
+		return "BaseBallCount{" +
+				"strike=" + strike +
+				", ball=" + ball +
+				'}';
 	}
 }

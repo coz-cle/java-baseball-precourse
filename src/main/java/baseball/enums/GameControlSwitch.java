@@ -10,6 +10,7 @@ public enum GameControlSwitch {
 	RESTART(Constants.GAME_RESTART_SWITCH),
 	END(Constants.GAME_END_SWITCH)
 	;
+
 	private final String value;
 
 	GameControlSwitch(String value) {
@@ -23,7 +24,7 @@ public enum GameControlSwitch {
 					.orElseThrow(()-> new IllegalArgumentException(ErrorMessages.INVALID_EXIT_CHOICE));
 	 }
 
-	 public boolean isEndSwitch() {
-		return this == END;
+	 public boolean isRestart(){
+		return this == GameControlSwitch.RESTART;
 	 }
 }

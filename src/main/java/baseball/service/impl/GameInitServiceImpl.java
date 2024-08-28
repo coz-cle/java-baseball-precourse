@@ -1,17 +1,17 @@
 package baseball.service.impl;
 
 import baseball.domain.BaseballNumber;
-import baseball.service.GameInitializeService;
+import baseball.service.GameInitService;
 import baseball.util.BasicUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseBallGameInitializeService implements GameInitializeService {
+public class GameInitServiceImpl implements GameInitService {
 
 
 	@Override
-	public BaseballNumber createSystemNumber() {
+	public BaseballNumber init() {
 		List<String> randomNumberList = new ArrayList<>();
 
 		while (randomNumberList.size() < 3) {
@@ -23,6 +23,8 @@ public class BaseBallGameInitializeService implements GameInitializeService {
 				randomNumberList.add(randomNumber);
 			}
 		}
-		return BaseballNumber.from(randomNumberList);
+
+		final String randomNumber = String.join("", randomNumberList);
+		return BaseballNumber.from(randomNumber);
 	}
 }

@@ -25,7 +25,7 @@ public class BaseBallNumberValidator extends Validator<String> implements InputV
 	}
 
 	@Override
-	public void isAvailableGameNumber(String gameNumber) {
+	public void validateInput(String gameNumber) {
 		try {
 			validate(gameNumber);
 		} catch (IllegalArgumentException e) {
