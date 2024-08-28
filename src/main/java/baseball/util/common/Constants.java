@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.util.common;
 
 
 public class Constants {
