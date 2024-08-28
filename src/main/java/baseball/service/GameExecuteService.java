@@ -6,4 +6,6 @@ import baseball.enums.GameStatus;
 public interface GameExecuteService {
 
 	GameStatus run(GameStartDto gameStartDto);
+
+	GameStatus handleExecution(String inputValue);
 }

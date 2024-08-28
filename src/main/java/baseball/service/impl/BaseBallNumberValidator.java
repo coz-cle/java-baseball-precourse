@@ -25,15 +25,13 @@ public class BaseBallNumberValidator extends Validator<String> implements InputV
 	}
 
 	@Override
-	public boolean isAvailableGameNumber(String gameNumber) {
+	public void isAvailableGameNumber(String gameNumber) {
 		try {
 			validate(gameNumber);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
-		    return false;
+			throw e;
 		}
-
-		return true;
 	}
 
 	private void validateNumeric(String target) {

@@ -2,5 +2,5 @@ package baseball.service;
 
 public interface InputValidator {
 
-	boolean isAvailableGameNumber(String gameNumber);
+	void isAvailableGameNumber(String gameNumber);
 }

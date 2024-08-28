@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class BaseBallGameReadyService implements GameReadyService {
 	private static final String INPUT_NUMBER_TITLE_MESSAGE = "숫자를 입력해주세요 : ";
+
 	private final InputValidator inputValidator;
 
 	public BaseBallGameReadyService(InputValidator inputValidator) {
@@ -20,15 +21,13 @@ public class BaseBallGameReadyService implements GameReadyService {
 
 	@Override
 	public GameStartDto ready(BaseballNumber systemNumber) {
-		boolean check;
-		String inputNumber;
-		do{
-			System.out.print(INPUT_NUMBER_TITLE_MESSAGE);
-			inputNumber = BasicUtils.readLine();
-			check = inputValidator.isAvailableGameNumber(inputNumber);
-		} while (!check);
 
+		System.out.print(INPUT_NUMBER_TITLE_MESSAGE);
+		String inputNumber = BasicUtils.readLine();
+
+		inputValidator.isAvailableGameNumber(inputNumber);
 		BaseballNumber userNumber = createUserNumber(inputNumber);
+
 		return GameStartDto.from(systemNumber, userNumber);
 	}
 

@@ -22,4 +22,12 @@ public class GameStartDto {
 	public BaseballNumber getUserNumber() {
 		return userNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "GameStartDto{" +
+				"systemNumber=" + systemNumber +
+				", userNumber=" + userNumber +
+				'}';
+	}
 }

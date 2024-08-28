@@ -39,11 +39,11 @@ public class BaseBallCount {
 		return ball;
 	}
 
-	private boolean hasCount(int count){
-		return count > 0;
+	public boolean isNoting(){
+		return !hasBall() && !hasStrike();
 	}
 
-	public boolean isNothing(){
-		return  hasCount(ball) || hasCount(strike);
+	private boolean hasCount(int count){
+		return count > 0;
 	}
 }

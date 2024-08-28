@@ -2,6 +2,7 @@ package baseball.service.impl;
 
 import baseball.domain.BaseBallCount;
 import baseball.dto.GameStartDto;
+import baseball.enums.GameControlSwitch;
 import baseball.enums.GameStatus;
 import baseball.service.GameExecuteService;
 
@@ -13,6 +14,7 @@ public class BaseBallGameExecuteService implements GameExecuteService {
 	private static final String NOT_THING_MESSAGE = "낫싱";
 	private static final String BALL_MESSAGE_SUFFIX = "볼";
 	private static final String STRIKE_MESSAGE_SUFFIX = "스트라이크";
+	private static final String GAME_CONTROL_TITLE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	// TODO 개선 리팩터링 필요
 	@Override
@@ -38,6 +40,7 @@ public class BaseBallGameExecuteService implements GameExecuteService {
 			}
 		}
 
+		System.out.println(baseBallCount);
 		// 비교 결과 출력
 		printRoundResult(baseBallCount);
 
@@ -46,6 +49,16 @@ public class BaseBallGameExecuteService implements GameExecuteService {
 			return GameStatus.NOT_RUNNING;
 		}
 
+		return GameStatus.RUNNING;
+	}
+
+	@Override
+	public GameStatus handleExecution(String inputValue) {
+		System.out.println(GAME_CONTROL_TITLE_MESSAGE);
+	    GameControlSwitch gameControlSwitch = GameControlSwitch.of(inputValue);
+		if(gameControlSwitch.isEndSwitch()) {
+			return GameStatus.OVER;
+		}
 		return GameStatus.RUNNING;
 	}
 
@@ -59,7 +72,7 @@ public class BaseBallGameExecuteService implements GameExecuteService {
 	private String getResultMessage(BaseBallCount baseBallCount) {
 		List<String> result = new ArrayList<>();
 
-		if(baseBallCount.isNothing()){
+		if(baseBallCount.isNoting()){
 			return NOT_THING_MESSAGE;
 		}
 
