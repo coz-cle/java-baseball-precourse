@@ -8,4 +8,6 @@ public interface GamePrintService {
     void printResult(BaseBallCount baseBallCount);
 
     void printOutMessage();
+
+	void printGameControlMessage();
 }

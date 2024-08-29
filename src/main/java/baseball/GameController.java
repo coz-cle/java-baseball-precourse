@@ -3,19 +3,22 @@ package baseball;
 import baseball.domain.BaseballNumber;
 import baseball.enums.GameControlSwitch;
 import baseball.service.GameInitService;
+import baseball.service.GamePrintService;
 import baseball.util.BasicUtils;
 
 public class GameController {
-    private static final String GAME_CONTROL_TITLE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
 
     private final GameInitService gameInitService;
+	private final GamePrintService gamePrintService;
 
-    private GameController(GameInitService gameInitService) {
+    private GameController(GameInitService gameInitService, GamePrintService gamePrintService) {
         this.gameInitService = gameInitService;
+		this.gamePrintService = gamePrintService;
     }
 
-    public static GameController from(GameInitService gameInitService) {
-        return new GameController(gameInitService);
+    public static GameController from(GameInitService gameInitService, GamePrintService gamePrintService) {
+        return new GameController(gameInitService, gamePrintService);
     }
 
     public void execute(GameProcessor gameProcessor){
@@ -28,7 +31,7 @@ public class GameController {
             gameProcessor.process(systemNumber);
 
             // 게임 마무리
-            System.out.println(GAME_CONTROL_TITLE_MESSAGE);
+            gamePrintService.printGameControlMessage();
             gameControlSwitch = convertControlSwitch(BasicUtils.readLine());
         } while (gameControlSwitch.isRestart());
     }

@@ -7,6 +7,8 @@ import baseball.util.BasicUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.util.Constants.*;
+
 public class GameInitServiceImpl implements GameInitService {
 
 
@@ -14,7 +16,7 @@ public class GameInitServiceImpl implements GameInitService {
 	public BaseballNumber init() {
 		List<String> randomNumberList = new ArrayList<>();
 
-		while (randomNumberList.size() < 3) {
+		while (randomNumberList.size() < BASEBALL_NUMBER_SIZE) {
 			// 난수 생성
 			final String randomNumber = String.valueOf(BasicUtils.generateRandomNumber());
 			// 난수 중복 검증

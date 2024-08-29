@@ -18,7 +18,7 @@ public class Application {
 		GamePrintService gamePrintService = new GamePrintServiceImpl();
 
 		GameProcessor gameProcessor = GameProcessor.from(gameExecuteService, gamePrintService);
-		GameController gameController = GameController.from(gameInitService);
+		GameController gameController = GameController.from(gameInitService, gamePrintService);
 		gameController.execute(gameProcessor);
 	}
 }
