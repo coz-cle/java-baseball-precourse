@@ -3,6 +3,7 @@ package baseball;
 import baseball.service.GameExecuteService;
 import baseball.service.GameInitService;
 import baseball.service.GamePrintService;
+import baseball.service.InputValidator;
 import baseball.service.impl.BaseBallNumberValidator;
 import baseball.service.impl.GameExecuteServiceImpl;
 import baseball.service.impl.GameInitServiceImpl;
@@ -12,9 +13,9 @@ public class Application {
 
 
 	public static void main(String[] args) {
-		BaseBallNumberValidator baseBallNumberValidator = new BaseBallNumberValidator();
+		InputValidator inputValidator = new BaseBallNumberValidator();
 		GameInitService gameInitService = new GameInitServiceImpl();
-		GameExecuteService gameExecuteService = new GameExecuteServiceImpl(baseBallNumberValidator);
+		GameExecuteService gameExecuteService = new GameExecuteServiceImpl(inputValidator);
 		GamePrintService gamePrintService = new GamePrintServiceImpl();
 
 		GameProcessor gameProcessor = GameProcessor.from(gameExecuteService, gamePrintService);

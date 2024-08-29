@@ -5,5 +5,7 @@ import baseball.domain.BaseballNumber;
 
 public interface GameExecuteService {
 
-	BaseBallCount run(BaseballNumber systemNumber);
+	BaseballNumber ready(String inputNumber);
+
+	BaseBallCount run(BaseballNumber systemNumber, BaseballNumber inputNumber);
 }

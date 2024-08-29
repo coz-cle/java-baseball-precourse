@@ -4,7 +4,6 @@ import baseball.domain.BaseBallCount;
 import baseball.domain.BaseballNumber;
 import baseball.service.GameExecuteService;
 import baseball.service.InputValidator;
-import baseball.util.BasicUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,18 +17,24 @@ public class GameExecuteServiceImpl implements GameExecuteService {
 		this.inputValidator = inputValidator;
 	}
 
-	@Override
-	public BaseBallCount run(BaseballNumber systemNumber) {
 
-		final String inputNumber = BasicUtils.readLine();
-		validateInput(inputNumber);
+	@Override
+	public BaseballNumber ready(String inputValue){
+		validateInput(inputValue);
+       return BaseballNumber.from(inputValue);
+	}
+
+
+	@Override
+	public BaseBallCount run(BaseballNumber systemNumber, BaseballNumber inputNumber) {
 
 		List<String> systemNumbers  = splitStringToList(systemNumber.getValue());
-        List<String> inputNumbers = splitStringToList(inputNumber);
+        List<String> inputNumbers = splitStringToList(inputNumber.getValue());
 
 		// 입력 값과 시스템 값 비교
 		return countBaseBall(systemNumbers,inputNumbers);
 	}
+
 
 	private BaseBallCount countBaseBall(List<String> systemNumbers,List<String> inputNumbers){
 	        BaseBallCount baseBallCount = BaseBallCount.from();
