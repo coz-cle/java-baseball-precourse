@@ -1,25 +1,15 @@
 package baseball;
 
-import baseball.service.GameExecuteService;
-import baseball.service.GameInitService;
-import baseball.service.GamePrintService;
-import baseball.service.InputValidator;
-import baseball.service.impl.BaseBallNumberValidator;
-import baseball.service.impl.GameExecuteServiceImpl;
-import baseball.service.impl.GameInitServiceImpl;
-import baseball.service.impl.GamePrintServiceImpl;
+import baseball.config.AppConfig;
+import baseball.controller.GameController;
 
 public class Application {
 
-
 	public static void main(String[] args) {
-		InputValidator inputValidator = new BaseBallNumberValidator();
-		GameInitService gameInitService = new GameInitServiceImpl();
-		GameExecuteService gameExecuteService = new GameExecuteServiceImpl(inputValidator);
-		GamePrintService gamePrintService = new GamePrintServiceImpl();
+		AppConfig appConfig = new AppConfig();
 
-		GameProcessor gameProcessor = GameProcessor.from(gameExecuteService, gamePrintService);
-		GameController gameController = GameController.from(gameInitService, gamePrintService);
-		gameController.execute(gameProcessor);
+		GameController gameController = appConfig.gameController();
+
+		gameController.execute();
 	}
 }
