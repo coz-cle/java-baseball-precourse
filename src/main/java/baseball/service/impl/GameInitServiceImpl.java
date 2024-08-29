@@ -5,7 +5,9 @@ import baseball.service.GameInitService;
 import baseball.service.NumberGenerator;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static baseball.util.Constants.*;
 
@@ -19,19 +21,16 @@ public class GameInitServiceImpl implements GameInitService {
 
 	@Override
 	public BaseballNumber init() {
-		List<String> randomNumberList = new ArrayList<>();
+		Set<String> duplicationFilter = new HashSet<>();
 
-		while (randomNumberList.size() < BASEBALL_NUMBER_SIZE) {
+		while (duplicationFilter.size() < BASEBALL_NUMBER_SIZE) {
 			// 난수 생성
 			final String randomNumber = String.valueOf(numberGenerator.randomNumber());
-			// 난수 중복 검증
-			if(!randomNumberList.contains(randomNumber)){
-				// 난수 추가
-				randomNumberList.add(randomNumber);
-			}
+			// 난수 추가
+			duplicationFilter.add(randomNumber);
 		}
 
-		final String randomNumber = String.join("", randomNumberList);
+		final String randomNumber = String.join("", duplicationFilter);
 		return BaseballNumber.from(randomNumber);
 	}
 }
