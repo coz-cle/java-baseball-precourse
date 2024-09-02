@@ -33,7 +33,6 @@ public class GameController {
     }
 
     public void execute(){
-        GameControlSwitch gameControlSwitch;
         do{
             // 게임 초기화
             BaseballNumber systemNumber = gameInitService.init();
@@ -43,8 +42,7 @@ public class GameController {
 
             // 게임 마무리
             gamePrintService.printGameControlMessage();
-            gameControlSwitch = convertControlSwitch(BasicUtils.readLine());
-        } while (gameControlSwitch.isRestart());
+        } while (isRestart());
     }
 
 	private void process(BaseballNumber systemNumber){
@@ -70,6 +68,10 @@ public class GameController {
         } while (true);
     }
 
+	private boolean isRestart() {
+		GameControlSwitch gameControlSwitch = convertControlSwitch(BasicUtils.readLine());
+		return gameControlSwitch.isRestart();
+	}
 
     private GameControlSwitch convertControlSwitch(String input) {
         return GameControlSwitch.of(input);
