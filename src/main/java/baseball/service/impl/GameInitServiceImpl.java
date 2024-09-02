@@ -21,16 +21,7 @@ public class GameInitServiceImpl implements GameInitService {
 
 	@Override
 	public BaseballNumber init() {
-		Set<String> duplicationFilter = new HashSet<>();
-
-		while (duplicationFilter.size() < BASEBALL_NUMBER_SIZE) {
-			// 난수 생성
-			final String randomNumber = String.valueOf(numberGenerator.randomNumber());
-			// 난수 추가
-			duplicationFilter.add(randomNumber);
-		}
-
-		final String randomNumber = String.join("", duplicationFilter);
+		final String randomNumber = numberGenerator.randomNumber();
 		return BaseballNumber.from(randomNumber);
 	}
 }

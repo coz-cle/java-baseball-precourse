@@ -2,5 +2,5 @@ package baseball.service;
 
 public interface NumberGenerator {
 
-	int randomNumber();
+	String randomNumber();
 }
