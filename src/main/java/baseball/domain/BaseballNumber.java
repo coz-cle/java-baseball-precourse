@@ -1,9 +1,26 @@
 package baseball.domain;
 
+
 public class BaseballNumber {
 
-    /**
-     * TODO: 컴퓨터가 만든 3자리 난수를 관리하는 객체 정의하기
-     */
+	private final String value;
 
+	private BaseballNumber(String value) {
+		this.value = value;
+	}
+
+	public static BaseballNumber from(String value) {
+		return new BaseballNumber(value);
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return "BaseballNumber{" +
+				"value='" + value + '\'' +
+				'}';
+	}
 }

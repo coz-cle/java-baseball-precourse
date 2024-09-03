@@ -1,12 +1,15 @@
 package baseball;
 
+import baseball.config.AppConfig;
+import baseball.controller.GameController;
+
 public class Application {
-    public static void main(String[] args) {
-        // 게임 시작
 
-        // 게임 진행
+	public static void main(String[] args) {
+		AppConfig appConfig = new AppConfig();
 
-        // 게임 완료
-        
-    }
+		GameController gameController = appConfig.gameController();
+
+		gameController.execute();
+	}
 }
